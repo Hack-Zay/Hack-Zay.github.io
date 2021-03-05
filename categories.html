@@ -1,34 +1,22 @@
 ---
-layout: default
-title: 按类别查找博客
+layout: page
+title: Categories
+header: Posts By Category
+group: navigation
 ---
+{% include JB/setup %}
 
-<div class="categories">
-{% assign category_list = site.categories %}
-  {% if category_list.first[0] == null %}
-    {% for category in category_list %}
-        <a class="categoriesa" href="#{{ category | slugify }}">{{ category }}</a>
-    {% endfor %}
-  {% else %}
-    {% for category in category_list %}
-        <a class="categoriesa" href="#{{ category[0] | slugify }}">{{ category[0] }}</a>
-    {% endfor %}
-  {% endif %}
-{% assign category_list = nil %}
-</div>
+<ul class="tag_box inline">
+  {% assign categories_list = site.categories %}
+  {% include JB/categories_list %}
+</ul>
 
-{% for category in site.categories  %}
-    <span class="categorytitle" id="{{ category[0] | slugify }}">{{ category[0] }}</span>
-    <ul class="post-list">
-        {% assign pages_list = category[1] %}
-        {% for post in pages_list reversed %}
-            {% if post.title != null %}
-            {% if group == null or group == post.group %}
-            <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></li>
-            {% endif %}
-            {% endif %}
-        {% endfor %}
-        {% assign pages_list = nil %}
-        {% assign group = nil %}
-    </ul>
+
+{% for category in site.categories %} 
+  <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
+  <ul>
+    {% assign pages_list = category[1] %}  
+    {% include JB/pages_list %}
+  </ul>
 {% endfor %}
+

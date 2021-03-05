@@ -1,11 +1,7 @@
 ---
+theme :
+  name : bootstrap-3
 layout: default
 ---
-<div class="well">
-    {% if page.subtitle %}
-    <h4 class="home-subtitle">{{ page.subtitle }}</h4>
-    {% endif %}
-    <div>
-    	{{ content }}
-    </div>
-</div>
+{% include JB/setup %}
+{% include themes/bootstrap-3/page.html %}
