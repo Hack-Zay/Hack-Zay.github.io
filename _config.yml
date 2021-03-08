@@ -15,6 +15,7 @@
 
  # Theme Settings
 theme: jekyll-theme-persephone
+remote_theme: erlzhang/jekyll-theme-persephone
 
 # # Your site's logo. Will be shown on the left top of your page.
 # logo: /img/logo.svg
